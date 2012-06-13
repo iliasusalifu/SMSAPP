@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %> 
+<link rel="stylesheet" type="text/css" href="images/style.css" />
+<title>SMS Content Management Platform</title>
+</head>
+<body>
+	<div id="bg">
+		<div id="sadrzaj">
+			<div id="toplinks">
+				<a href="#">Home</a>
+				<a href="#">Account</a>
+				<a href="#">System</a>
+				<a href="#">Preferences</a>
+				<a href="#">Settings</a>
+				<a href="#">Logout</a>
+			</div>
+
+			<div id="zaglavlje">
+				<div id="title">
+					<a href="#">SMS Content Management Platform</a>
+				</div>
+				
+				<div id="title_info">
+					<p><i>Is this really necessary:</i></p>
+					<p><b><a href="#">Anyway add appropriate information</a></b>
+					
+					</p>
+				</div>
+				
+			</div>
+
+			<div id="navigacija">
+				<ul>
+					<li><a href="#">Message Push</a></li>
+					<li><a href="#">Voting</a></li>
+					<li><a href="#">Provisioning</a></li>
+					<li><a href="#">Scheduling</a></li>
+					<li><a href="#">Reporting</a></li>
+					<li><a href="#">Technology</a></li>
+				</ul>
+	
+				<div class="lijevo">
+					<p><b>Some Information</b></p>
+					<p>Add some text here</p>
+				</div> 
+			</div>
+	
+			<div id="clanci">
+				<h2><a href="#">SMS</a></h2>
+                                <%= yield %>
+					
+					<p class='datum'>SMALL HEADING HERE <img src='images/strelica2.gif' width='3px' height='5px' alt='' /> <a href='index.php?id=29'>READ MORE</a></p>
+					
+					<!-- INPUT SOME TEXT HERE -->
+					<p class='datum'>SMALL HEADING HERE<img src='images/strelica2.gif' width='3px' height='5px' alt='' /> <a href='index.php?id=29'>READ MORE</a></p>						
+			</div>
+
+			<div id="desna_rubrika">
+				<h3>Important links go down below here</h3>
+				<p>
+			<a href="#"><img src="images/strelica2.gif" width="3px" height="5px" alt="" /> Example link here</a>
+				</p>
+    	
+				<div id="podaci">
+    				<p>Validate > <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a> | 
+					<a href="http://validator.w3.org/check?uri=referer">XHTML 1.0 Strict!</a></p>
+    				<p>&copy; <a href="#">Yoursite.com</a> > Designed by <a href="mailto:luka@solucija.com">Luka Cvrk</a>
+					</p>	
+    			</div>
+			</div>
+

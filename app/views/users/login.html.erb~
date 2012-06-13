@@ -1,0 +1,29 @@
+
+	<section style="height: 1714px" class="column" id="main">
+<%= flash[:notice] if flash[:notice] %>
+    <article style="float: right; width: 66%" class="module width_quarter">
+       <header style="text-align: center">
+           <h3>LOG ON</h3>
+       </header>
+       <div class="message_list">
+             <div class="module_content">
+                  <%= form_for @user, :url => log_user_in_path,:html => {:class => 'post_message'} do |f| %>
+                      <%# error_messages_for @user %>
+                     <fieldset>
+                         <label>Username</label> <%= f.text_field 'name' %><br />
+                     </fieldset>
+                     <fieldset>
+                    	   <label>Password</label><%= f.password_field 'password' %><br />
+  									 </fieldset>
+                       <%= f.submit 'LOGIN' %>
+									<% end %>             
+               Click here to <strong><%= link_to 'sign up', new_user_path %></strong>
+             </div>
+             
+       </div>
+    </article>
+  </section>
+
+	
+	
+

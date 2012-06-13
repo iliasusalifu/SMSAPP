@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  layout 'application'
   @page_title = 'SMS Content Management Platform'
   def authorize
      if session[:user_id]
