@@ -1,0 +1,47 @@
+<% if @user_to_edit %>
+
+
+  <% if @user_to_edit.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user_to_edit.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user_to_edit.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+	<section style="height: 1714px" class="column" id="main">
+    
+    <article style="float: right; width: 66%" class="module width_quarter">
+       <header style="text-align: center">
+           <h3>EDIT</h3>
+       </header>
+       <div class="message_list" style="height: 370px">
+             <div class="module_content" >
+                   
+                  <%= form_for @user_to_edit, :html => {:class => 'post_message'} do |f| %>
+                     <fieldset class="<%= error_field?(@user_to_edit,'name') %>">
+                         <label>Username</label> <%= f.text_field 'name' %><br />
+                     </fieldset>
+										 <fieldset class="<%= error_field?(@user_to_edit,'email') %>">
+                         <label>Email</label> <%= f.text_field 'email' %><br />
+                     </fieldset>
+                     <fieldset class="<%= error_field?(@user_to_edit,'password') %>">
+                    	   <label>Password</label><%= f.password_field 'password' %><br />
+  									 </fieldset>
+                     <fieldset class="<%= error_field?(@user_to_edit,'password','doesn\'t match confirmation') %>">
+                         <label>Password confirmation</label> <%= f.password_field 'password_confirmation' %><br />
+                     </fieldset>
+                       <%= f.submit 'Submit' %>
+									<% end %>             
+               Click here to <strong><%= link_to 'log on', login_path %></strong>
+             </div>
+             
+       </div>
+    </article>
+  </section>
+
+
+<% end %>
