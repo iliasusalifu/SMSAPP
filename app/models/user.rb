@@ -13,7 +13,9 @@ attr_accessible :email, :hashed_password, :name, :password, :password_confirmati
   
 
   validate :password_must_be_present
-
+  def is_admin?
+     self.role == 'admin' ? true : false
+  end
   def User.authenticate(name,password)
     if user = find_by_name(name)
        if user.hashed_password == encrypt_password(password, user.salt)

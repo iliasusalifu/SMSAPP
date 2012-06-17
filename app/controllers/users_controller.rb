@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authorize, :except => ['login','new','create','log_user_in'] 
+  #before_filter :validate_password, :only => ['edit','update','destroy'], :unless => is_admin?(User.find(params[:id])) 
   # GET /users
   # GET /users.json
   def index
@@ -35,7 +36,21 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @user = User.find(params[:id])
+    begin
+      @user_to_edit = User.find(params[:id]) #user whose information is to be edited
+    rescue ActiveRecord::RecordNotFound
+      logger.debug "Attempt to access invalid user with id '#{params[:id]}'"
+      render_404 and return
+    end
+
+    @user = get_current_user                   #currently logged in user
+    if authorized_to_edit_user?(@user,@user_to_edit) #if admin user or self then allow edit
+			 render :layout => 'dashboard'
+    else
+       flash.keep[:warning] = "You are not authorized to edit this user. This action has been logged."
+       ##Log action to database goes here.
+       redirect_to dashboards_path
+    end
   end
 
   # POST /users
@@ -67,7 +82,7 @@ class UsersController < ApplicationController
         format.html { redirect_to @user }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { redirect_to action: "edit" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -112,5 +127,19 @@ class UsersController < ApplicationController
     respond_to do |format|         
 				format.html {redirect_to login_path }
     end
+  end
+  
+  private
+
+  def authorized_to_edit_user?(current_user,user_to_edit_id)
+      logger.debug "#{current_user.id == user_to_edit_id}"
+      logger.debug "current_user.id = #{current_user.id} and user_to_edit_id = #{user_to_edit_id}"
+      if (current_user == user_to_edit_id)
+         return true
+      elsif current_user.is_admin?
+         return true
+      else
+         return false
+      end
   end
 end

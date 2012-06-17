@@ -339,7 +339,7 @@ background: url(<%= asset_path 'icn_jump_back.png' %>) no-repeat center left;
 }
 
 #sidebar p {
-color: #666666;
+color: #666600;
 padding-left: 6%;
 text-shadow: 0 1px 0 #fff;
 margin: 10px 0 0 0;}
@@ -914,5 +914,18 @@ border-radius: 5px;
     list-style: square; }
 
 fieldset.field_with_errors {
-  background-color: #F3D9D9;}
+  background-color: #F3D9D9;
+  border: 1px solid #D20009;}
 
+
+#content_container{
+border: 1px dotted #D20009;
+background-color: #F3D9D9;
+width: 94%;
+margin: 20px 3% 0 3%;
+padding: 5px 5px 5px 5px;
+min-height: 800px;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+}

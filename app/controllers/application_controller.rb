@@ -26,4 +26,11 @@ class ApplicationController < ActionController::Base
      end
      render :file => "#{Rails.root}/public/404.html", :status => 404, :layout => false
    end
+
+   #returns currently logged in user
+   def get_current_user
+       User.find(session[:user_id])
+   end
+
+   
 end

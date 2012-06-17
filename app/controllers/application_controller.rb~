@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  layout 'application'
   @page_title = 'SMS Content Management Platform'
   def authorize
      if session[:user_id]
@@ -24,5 +25,19 @@ class ApplicationController < ActionController::Base
         logger.info "Rendering 404: #{exception.message}"
      end
      render :file => "#{Rails.root}/public/404.html", :status => 404, :layout => false
+   end
+
+   #returns currently logged in user
+   def get_current_user
+       User.find(session[:user_id])
+   end
+
+   def find_safe  
+      begin
+            yield
+      rescue ActiveRecord::RecordNotFound
+            Proc.new {render_404 and return}
+      end
+       Proc.new
    end
 end

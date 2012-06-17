@@ -1,4 +1,8 @@
-<div style="border: 2px solid red;margin-top:10px;margin: auto; width: 95%">
+<div class="module width_full">
+<header>
+    <h3>Work Area</h3>
+  </header>
+
 1. The quick brown fox jumps over the lazy dog.
 2. The quick brown fox jumps over the lazy dog.
 3. The quick brown fox jumps over the lazy dog.
@@ -7,3 +11,13 @@
 6. The quick brown fox jumps over the lazy dog.
 7. The quick brown fox jumps over the lazy dog.
 </div>
+
+<article class="module width_full">
+
+  <header>
+    <h3>Work Area</h3>
+  </header>
+
+  <div class="module_content">
+  </div>
+</article>
